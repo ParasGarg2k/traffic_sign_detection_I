@@ -27,13 +27,15 @@ Traffic signs play a crucial role in regulating road traffic and ensuring safety
 - **Classes:** 43 traffic sign categories
 - **Samples:** ~50,000 images
 - **Image Size:** Resized to 32x32 RGB
-- **Source:** [GTSRB Official](https://benchmark.ini.rub.de/gtsrb_news.html)
+- **Source:** [GTSRB Kaggle](https://www.kaggle.com/datasets/meowmeowmeowmeowmeow/gtsrb-german-traffic-sign/data)
 
 ---
 
 ## 🏗️ Model Architecture
 
+
 The model is built using **TensorFlow/Keras** and follows a CNN-based architecture:
+
 ![arch](traffic_sign_net_custom_flowchart.png)
 ---
 
