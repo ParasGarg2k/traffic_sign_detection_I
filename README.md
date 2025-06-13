@@ -67,7 +67,7 @@ The trained model is deployed using **Streamlit**, allowing users to:
 
 ### Homepage
 
-![Home](screenshots/homepage.png)
+![Home](screenshots/home.png)
 
 ### Upload & Prediction
 
