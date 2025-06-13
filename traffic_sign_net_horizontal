@@ -1,0 +1,49 @@
+digraph {
+	rankdir=LR
+	Input [label="Input Layer
+(input_shape)" shape=box]
+	subgraph cluster_0 {
+		color=lightgrey label="Block 1" style=rounded
+		Conv1_1 [label="Conv2D (64)
+3x3 + ReLU + BN" shape=box]
+		Conv1_2 [label="Conv2D (64)
+3x3 + ReLU + BN" shape=box]
+		Pool1 [label="MaxPool 2x2 + Dropout(0.25)" shape=box]
+		Conv1_1 -> Conv1_2
+		Conv1_2 -> Pool1
+	}
+	subgraph cluster_1 {
+		color=lightgrey label="Block 2" style=rounded
+		Conv2_1 [label="Conv2D (128)
+3x3 + ReLU + BN" shape=box]
+		Conv2_2 [label="Conv2D (128)
+3x3 + ReLU + BN" shape=box]
+		Pool2 [label="MaxPool 2x2 + Dropout(0.25)" shape=box]
+		Conv2_1 -> Conv2_2
+		Conv2_2 -> Pool2
+	}
+	subgraph cluster_2 {
+		color=lightgrey label="Block 3" style=rounded
+		Conv3_1 [label="Conv2D (256)
+3x3 + ReLU + BN" shape=box]
+		Conv3_2 [label="Conv2D (256)
+3x3 + ReLU + BN" shape=box]
+		Pool3 [label="MaxPool 2x2 + Dropout(0.25)" shape=box]
+		Conv3_1 -> Conv3_2
+		Conv3_2 -> Pool3
+	}
+	subgraph cluster_3 {
+		color=lightblue label=Classifier style=rounded
+		GAP [label=GlobalAvgPooling2D shape=box]
+		FC1 [label="Dense(256)
+ReLU + BN + Dropout(0.5)" shape=box]
+		Output [label="Dense(43)
+Softmax" shape=box]
+		GAP -> FC1
+		FC1 -> Output
+	}
+	Input -> Conv1_1
+	Pool1 -> Conv2_1
+	Pool2 -> Conv3_1
+	Pool3 -> GAP
+}
